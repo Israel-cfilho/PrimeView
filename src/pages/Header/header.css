@@ -1,0 +1,24 @@
+header {
+    display: flex;
+    width: 100%;
+    height: 80px;
+    align-items: center;
+    justify-content: space-around;
+    background-color: black;
+}
+
+.logo {
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    text-decoration: 0;
+}
+
+.favoritos {
+    color: white;
+    background-color: gray;
+    border: 1px solid gray;
+    padding: 10px 10px;
+    border-radius: 4px;
+    text-decoration: 0;
+}

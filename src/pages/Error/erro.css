@@ -1,0 +1,26 @@
+.erro {
+    width: 100%;
+    height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+.erro h1 {
+    font-size: 120px;
+}
+
+.erro p {
+    font-weight: bold;
+}
+
+.erro a {
+    text-decoration: none;
+    background-color: #116feb;
+    padding: 10px;
+    color: #fff;
+    border-radius: 4px;
+    margin-top: 14px;
+}
