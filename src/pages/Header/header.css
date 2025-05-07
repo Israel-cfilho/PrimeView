@@ -26,3 +26,14 @@ header {
 span {
     color: #116feb;
 }
+
+@media (max-width: 290px) {
+    .favoritos {
+        font-size: 10px;
+        font-weight: bold;
+    } 
+
+    .logo {
+        font-size: 18px;
+    }
+}
