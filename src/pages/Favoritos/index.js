@@ -39,11 +39,12 @@ function Favoritos(){
             <ul>
                 {filmes.map((item) => {
                     return(
-                        <li key={item.id}>
-                            <span>{item.title}</span>
-                              <div>
-                                <Link to={`/filme/${item.id}`}>Ver detalhes</Link>
-                                <button onClick={() => excluirFilme(item.id)}>Excluir</button>
+                        <li className='favoritos-list' key={item.id}>
+                            <span className='title-details'>{item.title}</span>
+                            <img className='img-details' src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} />
+                              <div className='details'>
+                                <Link className='link-details' to={`/filme/${item.id}`}>Detalhes</Link>
+                                <button className='btn-excluir' onClick={() => excluirFilme(item.id)}>Excluir</button>
                               </div>
                         </li>
                     )
