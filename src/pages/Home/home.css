@@ -20,6 +20,11 @@
     background-color: #454545;
     padding: 15px;
     border-radius: 4px;
+    transition: all .5s;
+}
+
+.lista-filmes article:hover {
+    transform: scale(1.02);
 }
 
 .lista-filmes img {
