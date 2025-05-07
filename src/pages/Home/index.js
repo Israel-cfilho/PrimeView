@@ -18,10 +18,9 @@ function Home() {
             page: 1,
           }
         });
-        
+
         // Aqui você já tem a lista de filmes em response.data.results
-        setFilmes(response.data.results.slice(0, 10)); // Pega os 
-        // primeiros 10 filmes
+        setFilmes(response.data.results.slice(0, 20)); // Pega os primeiros 10 filmes
         setLoading(false);
 
       } catch (error) {
@@ -33,8 +32,9 @@ function Home() {
   }, []);  // O array vazio significa que o efeito será executado uma vez
 
 
-  if(loading) {
-    return(
+
+  if (loading) {
+    return (
       <div>
         <h2 className='loading'>Carregando filmes...</h2>
       </div>
@@ -46,8 +46,7 @@ function Home() {
       <div className="lista-filmes">
         {filmes.map((filme) => (
           <article key={filme.id}>
-            <strong>{filme.title}</strong>
-            <img src={`https://image.tmdb.org/t/p/original/${filme.poster_path}`}/>
+            <img src={`https://image.tmdb.org/t/p/original/${filme.poster_path}`} />
             <Link to={`/filme/${filme.id}`}>Acessar</Link>
           </article>
         ))}
