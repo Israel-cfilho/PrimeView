@@ -1,36 +1,36 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import './favoritos.css'
 import { toast } from 'react-toastify';
+import {FavoritoCard, TituloFilme, DetalheLink, BotaoExcluir } from './favoritosStyles'
+ 
 
 
 
-
-function Favoritos(){
+function Favoritos() {
 
 
     const [filmes, setFilmes] = useState([]);
-    
+
     useEffect(() => {
-    
+
         const minhaLista = localStorage.getItem("@primeflix");
         setFilmes(JSON.parse(minhaLista) || []);
-    
-    
+
+
     }, [])
 
     function excluirFilme(id) {
-       let filtroFilmes = filmes.filter( (item) => {
-        return(item.id !== id)
-       }) 
+        let filtroFilmes = filmes.filter((item) => {
+            return (item.id !== id)
+        })
 
-       setFilmes(filtroFilmes);
-       localStorage.setItem("@primeflix", JSON.stringify(filtroFilmes) );
-       toast.success("Filme excluído com sucesso!")
+        setFilmes(filtroFilmes);
+        localStorage.setItem("@primeflix", JSON.stringify(filtroFilmes));
+        toast.success("Filme excluído com sucesso!")
     }
 
 
-    return(
+    return (
         <div className='meus-filmes'>
             <h1>Meus Filmes</h1>
 
@@ -38,15 +38,15 @@ function Favoritos(){
 
             <ul>
                 {filmes.map((item) => {
-                    return(
-                        <li className='favoritos-list' key={item.id}>
-                            <span className='title-details'>{item.title}</span>
-                            <img className='img-details' src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} />
-                              <div className='details'>
-                                <Link className='link-details' to={`/filme/${item.id}`}>Detalhes</Link>
-                                <button className='btn-excluir' onClick={() => excluirFilme(item.id)}>Excluir</button>
-                              </div>
-                        </li>
+                    return (
+                        <FavoritoCard key={item.id}>
+                            <TituloFilme>{item.title}</TituloFilme>
+                            <img className="img-details" src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} />
+                            <div className="details">
+                                <DetalheLink to={`/filme/${item.id}`}>Detalhes</DetalheLink>
+                                <BotaoExcluir onClick={() => excluirFilme(item.id)}>Excluir</BotaoExcluir>
+                            </div>
+                        </FavoritoCard>
                     )
                 })}
             </ul>
