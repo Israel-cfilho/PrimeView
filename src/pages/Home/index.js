@@ -1,12 +1,16 @@
 import './home.css'
 import { useEffect, useState } from "react";
-import api from '../../services/api';  // Importando o axios da API
+import api from '../../services/api';
 import { Link } from "react-router-dom";
-
+import { Spinner } from 'react-bootstrap';
+import { ListaFilmes, FilmeCard, FilmeImagem, BotaoAcessar } from '../Home/movieStyled'
+import Busca from '../Search';
 
 function Home() {
   const [filmes, setFilmes] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [termoBusca, setTermoBusca] = useState("");
+
 
   useEffect(() => {
     async function loadFilmes() {
@@ -18,39 +22,46 @@ function Home() {
             page: 1,
           }
         });
-
-        // Aqui você já tem a lista de filmes em response.data.results
-        setFilmes(response.data.results.slice(0, 20)); // Pega os primeiros 10 filmes
+        setFilmes(response.data.results.slice(0, 20));
         setLoading(false);
-
+        
       } catch (error) {
         console.error("Erro ao carregar filmes:", error);
       }
     }
 
-    loadFilmes();  // Chama a função para carregar os filmes
-  }, []);  // O array vazio significa que o efeito será executado uma vez
+    loadFilmes();
+  }, []);
 
 
 
   if (loading) {
     return (
       <div>
-        <h2 className='loading'>Carregando filmes...</h2>
+        <div class="text-center">
+          <Spinner>
+            <span class="visually-hidden">Carregando...</span>
+          </Spinner>
+        </div>
       </div>
     )
   }
 
   return (
+
     <div className="container">
-      <div className="lista-filmes">
+      <h1 className='titulo-lista'>
+  {termoBusca ? `Resultados de: "${termoBusca}"` : "Filmes populares"}
+</h1>
+      <Busca setFilmes={setFilmes} setLoading={setLoading} setTermoBusca={setTermoBusca} />
+      <ListaFilmes>
         {filmes.map((filme) => (
-          <article key={filme.id}>
-            <img src={`https://image.tmdb.org/t/p/original/${filme.poster_path}`} />
-            <Link to={`/filme/${filme.id}`}>Acessar</Link>
-          </article>
+          <FilmeCard key={filme.id}>
+            <FilmeImagem  src={`https://image.tmdb.org/t/p/original/${filme.poster_path}`} />
+            <BotaoAcessar to={`/filme/${filme.id}`}>Acessar</BotaoAcessar>
+          </FilmeCard>
         ))}
-      </div>
+      </ListaFilmes>
     </div>
   );
 }
