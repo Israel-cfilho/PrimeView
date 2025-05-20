@@ -1,6 +1,6 @@
 import RoutesApp from './routes'
 import { ToastContainer } from 'react-toastify';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
 
 
