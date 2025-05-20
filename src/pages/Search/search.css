@@ -1,0 +1,46 @@
+.busca-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  color: #fff;
+}
+
+.form-busca {
+  display: flex;
+  align-items: center;
+  background-color: #222;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
+  max-width: 500px;
+  width: 100%;
+}
+
+.form-busca input {
+  flex: 1;
+  padding: 12px 20px;
+  border: none;
+  background: none;
+  color: white;
+  font-size: 16px;
+  outline: none;
+}
+
+.form-busca button {
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  color: #116feb;
+  padding: 12px 20px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: color 0.3s;
+}
+
+.form-busca button:hover {
+  color: #fff;
+}
+

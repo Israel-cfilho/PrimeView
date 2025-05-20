@@ -5,6 +5,7 @@ import Filme from './pages/Filme'
 import Header from "./pages/Header";
 import Error from './pages/Error'
 import Favoritos from "./pages/Favoritos";
+import Search from './pages/Search'
 
 function RoutesApp() {
     return(
