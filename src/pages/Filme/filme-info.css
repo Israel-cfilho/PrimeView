@@ -1,61 +1,248 @@
- .filme-info {
+.filme-info {
     margin-top: 18px;
     display: flex;
     flex-direction: column;
     max-width: 800px;
     padding: 0 8px;
- }
+    width: 100%;
+    box-sizing: border-box;
+}
 
- .filme-info h1 {
+.filme-info h1 {
     margin: 14px 0;
     color: #116feb;
- }
+    font-size: 2rem;
+}
 
- .filme-info strong {
-   color: #116feb;
- }
+.filme-info strong {
+    color: #116feb;
+}
 
- .filme-info img {
+.filme-info img {
     border-radius: 8px;
-    width: 800px;
+    width: 100%;
     max-width: 100%;
     max-height: 340px;
     object-fit: cover;
- }
+}
 
- .filme-info h3 {
+.filme-info h3 {
     margin-top: 14px;
     color: #116feb;
- }
+    font-size: 1.5rem;
+}
 
- .filme-info span {
+.filme-info span {
     margin: 8px 0;
-    color: #fff;
- }
+    color: #000000;
+    line-height: 1.5;
+}
 
-.area-buttons button{
-    margin-right: 12px;
+.area-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.area-buttons button {
     margin-top: 14px;
-    margin-left: 0;
-    font-size: 20px;
+    margin-right: 0;
+    font-size: 1rem;
     border: 0;
     outline: none;
-    padding: 12px;
+    padding: 10px 16px;
     border-radius: 4px;
     cursor: pointer;
     transition: .2s;
- }
+    flex: 1 0 auto;
+}
 
- .area-buttons a:hover {
+.area-buttons a:hover {
     color: white;
- }
+}
 
- .area-buttons a {
+.area-buttons a {
     text-decoration: none;
     color: black;
- }
+}
 
- .area-buttons button:hover {
+.area-buttons button:hover {
     background-color: cornflowerblue;
     color: #fff;
- }
+}
+
+.estrelas {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.star {
+    cursor: pointer;
+    transition: color 200ms;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+.btn-avaliacao {
+    margin-top: 15px;
+    border: 0;
+    padding: 8px 12px;
+    background-color: #116feb;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 4px;
+    width: 100%;
+    max-width: 200px;
+}
+
+.elenco-container {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.elenco-slider {
+    overflow: hidden;
+    position: relative;
+}
+
+.elenco-track {
+    display: flex;
+    width: max-content;
+    animation: scroll-elenco 40s linear infinite;
+}
+
+.ator {
+    flex: 0 0 auto;
+    text-align: center;
+    margin: 0 15px;
+}
+
+.ator img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.ator p {
+    font-size: 12px;
+    margin-top: 8px;
+    white-space: nowrap;
+}
+
+.avaliacao {
+    margin-top: 30px;
+    text-align: center;
+}
+
+@keyframes scroll-elenco {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Media Queries para Responsividade */
+
+/* Tablets */
+@media (max-width: 768px) {
+    .filme-info {
+        padding: 0 15px;
+    }
+    
+    .filme-info h1 {
+        font-size: 1.8rem;
+    }
+    
+    .filme-info h3 {
+        font-size: 1.3rem;
+    }
+    
+    .ator {
+        margin: 0 10px;
+    }
+    
+    .ator img {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+/* Celulares médios */
+@media (max-width: 576px) {
+    .filme-info h1 {
+        font-size: 1.5rem;
+    }
+    
+    .filme-info h3 {
+        font-size: 1.2rem;
+    }
+    
+    .area-buttons button {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
+    
+    .elenco-container {
+        padding: 15px;
+    }
+    
+    .ator {
+        margin: 0 8px;
+    }
+    
+    .ator img {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .ator p {
+        font-size: 10px;
+    }
+    
+    .star {
+        size: 25px;
+    }
+}
+
+/* Celulares pequenos */
+@media (max-width: 400px) {
+    .filme-info h1 {
+        font-size: 1.3rem;
+    }
+    
+    .filme-info h3 {
+        font-size: 1.1rem;
+    }
+    
+    .area-buttons {
+        flex-direction: column;
+    }
+    
+    .area-buttons button {
+        width: 100%;
+    }
+    
+    .ator {
+        margin: 0 6px;
+    }
+    
+    .ator img {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .star {
+        size: 20px;
+    }
+}
