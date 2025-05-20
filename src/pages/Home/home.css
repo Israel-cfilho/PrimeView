@@ -1,3 +1,13 @@
+.titulo-lista {
+    width: 100%;
+    text-align: center;
+    color: #116feb;
+    font-weight: bold;
+    font-size: 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 .lista-filmes {
     display: grid;
     gap: 20px;
@@ -7,6 +17,9 @@
     margin: 0 auto;
 }
 
+.text-center {
+    margin-top: 50px;
+}
 
 .loading {
     display: flex;
@@ -17,7 +30,7 @@
 
 .lista-filmes article {
     width: 100%;
-    background-color: #454545;
+    background-color: #f0eeee;
     padding: 15px;
     border-radius: 4px;
     transition: all .5s;
