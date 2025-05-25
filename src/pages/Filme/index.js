@@ -4,8 +4,27 @@ import './filme-info.css';
 import api from "../../services/api";
 import { toast } from "react-toastify";
 import { FaStar } from "react-icons/fa";
+import { Container } from "react-bootstrap";
+import {
+    FilmeInfo,
+    BackgroundFilme,
+    FilmeConteudo,
+    FilmeCapa,
+    CapaEBotoes,
+    AreaButtons,
+    FilmeTexto,
+    Generos,
+    Sinopse,
+    ElencoContainer,
+    ElencoSlider,
+    ElencoTrack,
+    Ator,
+    Avaliacao,
+    Estrelas,
+    BtnAvaliacao
+} from './filmeStyled'
 
-const token = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiMjFlMDllZmU5ZTVjNjVlM2UzZGE3NzA4Y2FiM2JhMyIsIm5iZiI6MTc0MTYzMDE4NS44ODMwMDAxLCJzdWIiOiI2N2NmMmFlOTg1NmUxM2NiM2QxMTNlZDAiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.v0VWAPP_CgPAi53SwF1ugno_u9GRm8POneOeUaLhpBM";
+const token = process.env.REACT_APP_TMDB_TOKEN;
 
 function Filme() {
     const { id } = useParams();
@@ -35,7 +54,7 @@ function Filme() {
                 });
 
                 setFilme(filmeResponse.data);
-                setElenco(elencoResponse.data.cast.slice(0, 15)); // primeiros 15 atores
+                setElenco(elencoResponse.data.cast.slice(0, 15));
                 setLoading(false);
             } catch (error) {
                 console.log("Filme não encontrado");
@@ -93,43 +112,85 @@ function Filme() {
         );
     }
 
+
+
     return (
-        <div className="filme-info">
-            <h1>{filme.title}</h1>
-            <img className="filme-img" src={`https://image.tmdb.org/t/p/original/${filme.backdrop_path}`} alt={filme.title} />
+        <FilmeInfo>
+            <BackgroundFilme
+                style={{
+                    backgroundImage: `url(https://image.tmdb.org/t/p/original/${filme.backdrop_path})`,
+                }}
+            >
+                <div className="overlay">
+                    <Container>
+                        <FilmeConteudo>
+                            <CapaEBotoes>
+                                <FilmeCapa>
+                                    <img
+                                        src={`https://image.tmdb.org/t/p/w500${filme.poster_path}`}
+                                        alt={filme.title}
+                                    />
+                                </FilmeCapa>
+                                <AreaButtons>
+                                    <button onClick={salvarFilme}>Salvar</button>
+                                    <button>
+                                        <a
+                                            target="_blank"
+                                            rel="external"
+                                            href={`https://youtube.com/results?search_query=${filme.title} Trailer`}
+                                        >
+                                            Trailer
+                                        </a>
+                                    </button>
+                                </AreaButtons>
+                            </CapaEBotoes>
 
-            <h3>Sinopse</h3>
-            <span>{filme.overview}</span>
-            <strong>Avaliação: ⭐{filme.vote_average} / 10</strong>
+                            <FilmeTexto>
+                                <h1>{filme.title}</h1>
 
-            <div className="area-buttons">
-                <button onClick={salvarFilme}>Salvar</button>
-                <button>
-                    <a target="_blank" rel="external" href={`https://youtube.com/results?search_query=${filme.title} Trailer`}>
-                        Trailer
-                    </a>
-                </button>
-            </div>
+                                <Generos>
+                                    {filme.genres?.map((g, i) => (
+                                        <span key={i} className="genero-tag">
+                                            {" "}
+                                            {g.name}
+                                        </span>
+                                    ))}
+                                </Generos>
 
-            <div className="elenco-container">
-                <h3>Elenco</h3>
-                <div className="elenco-slider">
-                    <div className="elenco-track">
-                        {[...elenco, ...elenco].map((ator, index) => (
-                            ator.profile_path && (
-                                <div key={index} className="ator">
-                                    <img src={`https://image.tmdb.org/t/p/w200${ator.profile_path}`} alt={ator.name} />
-                                    <p>{ator.name}</p>
-                                </div>
-                            )
-                        ))}
-                    </div>
+                                <h3>Sinopse</h3>
+                                <Sinopse>
+                                    <p>{filme.overview}</p>
+                                    <strong>Avaliação: ⭐{filme.vote_average.toFixed(1)} / 10</strong>
+                                </Sinopse>
+
+                                <ElencoContainer>
+                                    <h3>Elenco</h3>
+                                    <ElencoSlider>
+                                        <ElencoTrack>
+                                            {[...elenco, ...elenco].map(
+                                                (ator, index) =>
+                                                    ator.profile_path && (
+                                                        <Ator key={index}>
+                                                            <img
+                                                                src={`https://image.tmdb.org/t/p/w200${ator.profile_path}`}
+                                                                alt={ator.name}
+                                                            />
+                                                            <p>{ator.name}</p>
+                                                        </Ator>
+                                                    )
+                                            )}
+                                        </ElencoTrack>
+                                    </ElencoSlider>
+                                </ElencoContainer>
+                            </FilmeTexto>
+                        </FilmeConteudo>
+                    </Container>
                 </div>
-            </div>
+            </BackgroundFilme>
 
-            <div className="avaliacao">
+            <Avaliacao>
                 <h3>Avaliar filme</h3>
-                <div className="estrelas">
+                <Estrelas>
                     {[...Array(5)].map((_, index) => {
                         const value = index + 1;
                         return (
@@ -150,11 +211,14 @@ function Filme() {
                             </label>
                         );
                     })}
-                </div>
-                <button className="btn-avaliacao" onClick={avaliarFilme}>Enviar Avaliação ({rating})</button>
-            </div>
-        </div>
+                </Estrelas>
+                <BtnAvaliacao onClick={avaliarFilme}>
+                    Enviar Avaliação ({rating})
+                </BtnAvaliacao>
+            </Avaliacao>
+        </FilmeInfo>
     );
 }
+
 
 export default Filme;
