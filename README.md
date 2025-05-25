@@ -1,4 +1,4 @@
-# PrimeFlix 🎬
+# PrimeView 🎬
 
 **PrimeFlix** é uma aplicação web desenvolvida com React que permite visualizar informações sobre filmes, organizá-los por categorias e acessá-los rapidamente por meio de uma interface moderna e responsiva. Inspirada em serviços como Netflix, esta aplicação consome a [API do TMDb](https://www.themoviedb.org/documentation/api) para exibir dados atualizados de filmes e séries.
 
