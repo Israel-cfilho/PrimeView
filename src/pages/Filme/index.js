@@ -24,7 +24,7 @@ import {
     BtnAvaliacao
 } from './filmeStyled'
 
-const token = process.env.REACT_APP_TMDB_TOKEN;
+const token = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiMjFlMDllZmU5ZTVjNjVlM2UzZGE3NzA4Y2FiM2JhMyIsIm5iZiI6MTc0MTYzMDE4NS44ODMwMDAxLCJzdWIiOiI2N2NmMmFlOTg1NmUxM2NiM2QxMTNlZDAiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.v0VWAPP_CgPAi53SwF1ugno_u9GRm8POneOeUaLhpBM";
 
 function Filme() {
     const { id } = useParams();
