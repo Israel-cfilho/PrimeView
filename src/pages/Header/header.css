@@ -33,25 +33,29 @@ ion-icon:hover {
 
 .favoritos {
     color: white;
-    background-color: #116feb;
-    border: 1px solid #116feb;
+    background: -webkit-linear-gradient(90deg, #ffd700, #ff8c00, #ff4500);
+    background: linear-gradient(90deg, #ffd700, #ff8c00, #ff4500);
     padding: 10px 10px;
     border-radius: 4px;
+    font-weight: bold;
     text-decoration: 0;
 }
 
 span {
-    color: #116feb;
+    background: linear-gradient(90deg, #ffd700, #ff8c00, #ff4500);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
 }
 
 @media (max-width: 290px) {
     .favoritos {
         font-size: 10px;
         font-weight: bold;
-    } 
+    }
 
     .logo {
         font-size: 18px;
     }
 }
-
