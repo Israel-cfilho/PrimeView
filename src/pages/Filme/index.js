@@ -14,6 +14,7 @@ import {
     AreaButtons,
     FilmeTexto,
     Generos,
+    GeneroTag,
     Sinopse,
     ElencoContainer,
     ElencoSlider,
@@ -150,10 +151,10 @@ function Filme() {
 
                                 <Generos>
                                     {filme.genres?.map((g, i) => (
-                                        <span key={i} className="genero-tag">
+                                        <GeneroTag key={i} className="genero-tag">
                                             {" "}
                                             {g.name}
-                                        </span>
+                                        </GeneroTag>
                                     ))}
                                 </Generos>
 
