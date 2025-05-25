@@ -14,7 +14,7 @@ export const ListaFilmes = styled.div`
 
 export const FilmeCard = styled.article`
   width: 100%;
-  background-color: #f0eeee;
+  background-color:rgb(63, 63, 63);
   padding: 15px;
   border-radius: 4px;
   transition: all 0.5s;
@@ -22,6 +22,7 @@ export const FilmeCard = styled.article`
   &:hover {
     transform: scale(1.02);
   }
+
 `;
 
 export const FilmeImagem = styled.img`
@@ -32,6 +33,11 @@ export const FilmeImagem = styled.img`
   display: block;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+
+    @media (max-width: 767px) {
+    width: 100%;
+    
+  }
 `;
 
 export const BotaoAcessar = styled(Link)`
@@ -40,9 +46,10 @@ export const BotaoAcessar = styled(Link)`
   justify-content: center;
   padding: 10px 0;
   font-size: 24px;
-  background-color: #116feb;
+  background: -webkit-linear-gradient(90deg, #ffd700,#ff8c00,#ff4500);background: linear-gradient(90deg, #ffd700,#ff8c00,#ff4500);
   text-decoration: none;
   color: #fff;
+  font-weight: bold;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
 `;
