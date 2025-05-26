@@ -17,7 +17,7 @@
 
 ```bash
 git clone https://github.com/israel-cfilho/primeflix.git
-cd primeflix
+cd primeview
 npm install
 npm start
 ````
